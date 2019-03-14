@@ -5,8 +5,8 @@
 /*                           GODOT ENGINE                                */
 /*                      https://godotengine.org                          */
 /*************************************************************************/
-/* Copyright (c) 2007-2018 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2018 Godot Engine contributors (cf. AUTHORS.md)    */
+/* Copyright (c) 2007-2019 Juan Linietsky, Ariel Manzur.                 */
+/* Copyright (c) 2014-2019 Godot Engine contributors (cf. AUTHORS.md)    */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -101,12 +101,12 @@ public class GodotPaymentV3 extends Godot.SingletonBase {
 		GodotLib.calldeferred(purchaseCallbackId, "consume_not_required", new Object[] {});
 	}
 
-	public void callbackFailConsume() {
-		GodotLib.calldeferred(purchaseCallbackId, "consume_fail", new Object[] {});
+	public void callbackFailConsume(String message) {
+		GodotLib.calldeferred(purchaseCallbackId, "consume_fail", new Object[] { message });
 	}
 
-	public void callbackFail() {
-		GodotLib.calldeferred(purchaseCallbackId, "purchase_fail", new Object[] {});
+	public void callbackFail(String message) {
+		GodotLib.calldeferred(purchaseCallbackId, "purchase_fail", new Object[] { message });
 	}
 
 	public void callbackCancel() {
@@ -165,11 +165,11 @@ public class GodotPaymentV3 extends Godot.SingletonBase {
 	}
 
 	public void callbackDisconnected() {
-		GodotLib.calldeferred(purchaseCallbackId, "iap_disconnected", new Object[]{});
+		GodotLib.calldeferred(purchaseCallbackId, "iap_disconnected", new Object[] {});
 	}
 
 	public void callbackConnected() {
-		GodotLib.calldeferred(purchaseCallbackId, "iap_connected", new Object[]{});
+		GodotLib.calldeferred(purchaseCallbackId, "iap_connected", new Object[] {});
 	}
 
 	// true if connected, false otherwise
